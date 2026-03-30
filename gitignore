@@ -1,0 +1,22 @@
+# Secrets — never commit
+.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+venv/
+.venv/
+
+# Data files that are too large for GitHub (>100MB)
+# Upload these manually or via Git LFS
+data/feature_matrix_Processor.csv
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
