@@ -62,7 +62,7 @@ SEG_NARRATIVE = {
         "insight": "The GPU market is bifurcated into two completely separate markets. AI/Datacenter-tier (H100, A100, A6000 with GDDR6 ≥16GB) is in active demand at record secondary-market prices. Legacy tier (Quadro K-series, Tesla M/K-series) is in structural freefall. The aggregate Pyx FMV median tells you nothing useful about either tier in isolation.",
         "finding": "NVIDIA Q4 FY2026 revenue: $68.1B (+73% YoY). Blackwell Ultra delivers 50× performance gain — triggering H100/A100 rotation from hyperscaler fleets into secondary market. Used GPU secondary market: avg **$17,087**, peak **$51,826** per unit. 282 EA2 demand signals collected. All 4 GPU-relevant flags ACTIVE.",
         "interpretation": "Blackwell Ultra creates a **rotation, not relief**. When hyperscalers refresh to Blackwell, H100/A100 units enter the secondary market. Enterprise inference workloads absorb them immediately at premium pricing. BIS affiliate rule extension redirects Chinese institutional demand to same secondary pool — compressing supply further.",
-        "action": "**AI-tier (H100/A100/A6000): BUY NOW or lock forward contracts.** Legacy (K-series, Tesla, Quadro K): DO NOT PURCHASE. Never use aggregate GPU Pyx FMV for procurement — use disaggregated tier benchmarks.",
+        "action": "**AI-tier (H100/A100/A6000): Elevated procurement priority — consider reviewing forward contracts.** Legacy (K-series, Tesla, Quadro K): DO NOT PURCHASE. Never use aggregate GPU Pyx FMV for procurement — use disaggregated tier benchmarks.",
         "signals_active": ["ea2_major_gpu_launch","ea2_datacenter_expansion","ea2_major_ai_model_release","ea3_new_export_control"],
     },
     "RAM": {
@@ -76,14 +76,14 @@ SEG_NARRATIVE = {
         "insight": "The Processor category contains two completely different markets — modern Xeon Scalable and legacy Xeon E5/Pentium/Celeron. The aggregate –5.4% median is a statistical artefact that accurately describes neither market. Never use it for procurement decisions.",
         "finding": "Bimodal distribution: left peak –60% to –80% (legacy crash), right cluster –5% to +30% (Scalable). Intel dominates: 1,089 GC_IDs. Bottom movers: Xeon L5520 (–89.9%), Pentium G3450 (–88.7%). Pyx FMV for legacy has reached **$1–$3/unit** — below the logistics cost of moving the hardware.",
         "interpretation": "No EA1, EA2, or EA3 signals are specific to the Processor category — price dynamics here are **lifecycle-driven**, not shortage or demand-driven. Export controls affect GPU/RAM supply chains but have minimal direct Processor impact. The bifurcation is structural and final-phase.",
-        "action": "**Modern Scalable (3rd/4th gen Gold/Platinum): WATCH — stable, normal cycles.** Legacy Xeon E5/Pentium/Celeron: DO NOT PURCHASE at any price above scrap. Never use –5.4% aggregate to benchmark a Scalable configuration.",
+        "action": "**Modern Scalable (3rd/4th gen Gold/Platinum): Monitor — stable pricing, review on normal cycles.** Legacy Xeon E5/Pentium/Celeron: DO NOT PURCHASE at any price above scrap. Never use –5.4% aggregate to benchmark a Scalable configuration.",
         "signals_active": ["ea3_new_export_control","ea3_new_tariff_action"],
     },
     "Storage": {
         "insight": "Storage is the calmest segment. No active shortage signals, no policy-driven demand redirects. The market behaves as normal supply-demand equilibrium with statistically significant seasonality (ANOVA p < 0.001).",
         "finding": "3M median: **+2.7%** across 1,049 GC_IDs. October = best buying window (+6% avg). November = worst (–3% avg). SSD (Intel, Samsung): gradual Pyx FMV erosion as flash costs decline. HDD (Seagate, WD): stable with capacity-driven floor. EU E-Waste regulations will incrementally increase used storage supply over 12–18 months.",
         "interpretation": "No EA signals specific to Storage. Price movement is lifecycle and seasonality-driven. Enterprise SSD buyers can afford to wait — flash cost trajectories favour buyers over time.",
-        "action": "**HOLD.** Purchase on normal contract cycles. If planning large storage procurements, **October is the historically strongest buying window**. Used storage resellers: factor in E-Waste regulation supply increase over next 12–18 months when modelling resale values.",
+        "action": "**Stable — no immediate action required.** Purchase on normal contract cycles. If planning large storage procurements, **October is the historically strongest buying window**. Used storage resellers: factor in E-Waste regulation supply increase over next 12–18 months when modelling resale values.",
         "signals_active": [],
     },
     "NetworkAdapter": {
@@ -187,14 +187,22 @@ st.markdown("""<style>
 .signal-on{background:#FDEDEC;border-left:4px solid #C0392B;padding:4px 12px;
            border-radius:3px;margin:2px 0;font-size:.82rem;font-weight:600;color:#922B21}
 .signal-off{color:#bbb;font-size:.82rem;padding:2px 12px}
-.insight-box{background:#EEF3FA;border-left:4px solid #1F3864;padding:10px 14px;
-             border-radius:4px;margin:8px 0;font-size:.88rem}
-.finding-box{background:#FEF9E7;border-left:4px solid #E08214;padding:10px 14px;
-             border-radius:4px;margin:8px 0;font-size:.88rem}
-.action-box{background:#EAFAF1;border-left:4px solid #27AE60;padding:10px 14px;
-            border-radius:4px;margin:8px 0;font-size:.88rem}
-.uncertainty-box{background:#F8F0FB;border-left:4px solid #6C3483;padding:12px 16px;
-                 border-radius:4px;margin:12px 0;font-size:.88rem}
+.insight-box{
+    background:rgba(33,102,172,0.12);
+    border-left:4px solid #2166AC;
+    padding:10px 14px;border-radius:4px;margin:8px 0;font-size:.88rem}
+.finding-box{
+    background:rgba(224,130,20,0.12);
+    border-left:4px solid #E08214;
+    padding:10px 14px;border-radius:4px;margin:8px 0;font-size:.88rem}
+.action-box{
+    background:rgba(39,174,96,0.12);
+    border-left:4px solid #27AE60;
+    padding:10px 14px;border-radius:4px;margin:8px 0;font-size:.88rem}
+.uncertainty-box{
+    background:rgba(108,52,131,0.12);
+    border-left:4px solid #6C3483;
+    padding:12px 16px;border-radius:4px;margin:12px 0;font-size:.88rem}
 .kpi-note{font-size:.7rem;color:#888;margin-top:-10px}
 </style>""", unsafe_allow_html=True)
 
@@ -395,15 +403,16 @@ with tab1:
 
     # Procurement decision matrix
     st.subheader("🎯 Full Procurement Decision Matrix")
+    st.caption("⚠️ **Guidance only.** The directional signals below are data-driven observations from PyxTech's pipeline. They are not financial or procurement advice. All purchasing decisions remain the sole responsibility of your organisation. Past price trends do not guarantee future performance.")
     st.dataframe(pd.DataFrame([
-        {"Segment":"GPU AI-tier (H100/A100/A6000)","Pyx FMV":"$17,087+ secondary","Action":"BUY NOW","Direction":"▲▲ +10–25%","Confidence":"HIGH","Rationale":"Rotation not relief. Floor established."},
-        {"Segment":"RAM DDR5/HBM","Pyx FMV":"$48 median (raw)","Action":"BUY NOW — MAX URGENCY","Direction":"▲▲ +15–30%","Confidence":"HIGH","Rationale":"+120% 6M. No spot market. Accelerating."},
-        {"Segment":"RAM DDR4","Pyx FMV":"$48 median (raw)","Action":"BUY NOW","Direction":"▲▲ +15–30%","Confidence":"HIGH","Rationale":"+56% 6M. EA1+price converged."},
-        {"Segment":"GPU Legacy (K/Tesla/Quadro)","Pyx FMV":"$1–$50","Action":"DO NOT PURCHASE","Direction":"▼▼ –30–90%","Confidence":"HIGH","Rationale":"Structural freefall. Approaching scrap."},
-        {"Segment":"Processor Scalable 3rd/4th gen","Pyx FMV":"$50–$200","Action":"WATCH","Direction":"→ Flat ±3%","Confidence":"MED","Rationale":"Stable. Normal cycles."},
-        {"Segment":"Processor Legacy (Xeon E5/Pentium)","Pyx FMV":"$1–$3","Action":"DO NOT PURCHASE","Direction":"▼▼ –80–90%","Confidence":"HIGH","Rationale":"EOL. $1–3/unit. Never price above scrap."},
-        {"Segment":"Storage","Pyx FMV":"$50–$150","Action":"HOLD","Direction":"▲ +2–5%","Confidence":"LOW","Rationale":"No shortage. Oct = best seasonal window."},
-        {"Segment":"Network Adapter","Pyx FMV":"$14–$248","Action":"WATCH","Direction":"→ ±5%","Confidence":"LOW","Rationale":"9 GC_IDs only. Expand coverage first."},
+        {"Segment":"GPU AI-tier (H100/A100/A6000)","Pyx FMV":"$17,087+ secondary","Action":"▲ Elevated Priority — Review Procurement","Direction":"▲▲ +10–25%","Confidence":"HIGH","Rationale":"Rotation not relief. Floor established."},
+        {"Segment":"RAM DDR5/HBM","Pyx FMV":"$48 median (raw)","Action":"▲▲ Urgent — Review Procurement Immediately","Direction":"▲▲ +15–30%","Confidence":"HIGH","Rationale":"+120% 6M. No spot market. Accelerating."},
+        {"Segment":"RAM DDR4","Pyx FMV":"$48 median (raw)","Action":"▲ Elevated Priority — Review Procurement","Direction":"▲▲ +15–30%","Confidence":"HIGH","Rationale":"+56% 6M. EA1+price converged."},
+        {"Segment":"GPU Legacy (K/Tesla/Quadro)","Pyx FMV":"$1–$50","Action":"▼ Low Priority — Reassess Valuation","Direction":"▼▼ –30–90%","Confidence":"HIGH","Rationale":"Structural freefall. Approaching scrap."},
+        {"Segment":"Processor Scalable 3rd/4th gen","Pyx FMV":"$50–$200","Action":"→ Monitor — Review at Next PO Cycle","Direction":"→ Flat ±3%","Confidence":"MED","Rationale":"Stable. Normal cycles."},
+        {"Segment":"Processor Legacy (Xeon E5/Pentium)","Pyx FMV":"$1–$3","Action":"▼ Low Priority — Reassess Valuation","Direction":"▼▼ –80–90%","Confidence":"HIGH","Rationale":"EOL. $1–3/unit. Never price above scrap."},
+        {"Segment":"Storage","Pyx FMV":"$50–$150","Action":"→ Stable — No Immediate Action Required","Direction":"▲ +2–5%","Confidence":"LOW","Rationale":"No shortage. Oct = best seasonal window."},
+        {"Segment":"Network Adapter","Pyx FMV":"$14–$248","Action":"→ Monitor — Review at Next PO Cycle","Direction":"→ ±5%","Confidence":"LOW","Rationale":"9 GC_IDs only. Expand coverage first."},
     ]), use_container_width=True, hide_index=True)
 
 
